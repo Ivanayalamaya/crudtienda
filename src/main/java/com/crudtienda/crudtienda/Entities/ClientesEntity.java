@@ -12,48 +12,49 @@ import jakarta.persistence.Id;
 public class ClientesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String nombre;
-    private String apellido;
-    private String direccion;
-    private String telefono;
-    private String email;
-    public int getId() {
-        return id;
+    private int id_cliente;
+    private String nombreCliente;
+    private String apellidoCliente;
+    private String direccionCliente;
+    private String telefonoCliente;
+    private String emailCliente;
+    public int getId_cliente() {
+        return id_cliente;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
-    public String getNombre() {
-        return nombre;
+    public String getNombreCliente() {
+        return nombreCliente;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
     }
-    public String getApellido() {
-        return apellido;
+    public String getApellidoCliente() {
+        return apellidoCliente;
     }
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidoCliente(String apellidoCliente) {
+        this.apellidoCliente = apellidoCliente;
     }
-    public String getDireccion() {
-        return direccion;
+    public String getDireccionCliente() {
+        return direccionCliente;
     }
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccionCliente(String direccionCliente) {
+        this.direccionCliente = direccionCliente;
     }
-    public String getTelefono() {
-        return telefono;
+    public String getTelefonoCliente() {
+        return telefonoCliente;
     }
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefonoCliente(String telefonoCliente) {
+        this.telefonoCliente = telefonoCliente;
     }
-    public String getEmail() {
-        return email;
+    public String getEmailCliente() {
+        return emailCliente;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailCliente(String emailCliente) {
+        this.emailCliente = emailCliente;
     }
+    
 
 
 
