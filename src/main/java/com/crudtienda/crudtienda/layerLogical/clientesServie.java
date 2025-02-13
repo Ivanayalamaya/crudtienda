@@ -1,4 +1,4 @@
-package com.crudtienda.layerLogical;
+package com.crudtienda.crudtienda.layerLogical;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
