@@ -18,6 +18,7 @@ public class ClientesEntity {
     private String direccionCliente;
     private String telefonoCliente;
     private String emailCliente;
+    
     public int getId_cliente() {
         return id_cliente;
     }
