@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.crudtienda.crudtienda.layerLogical.clientesServie;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.crudtienda.crudtienda.Advice.messageError;
@@ -32,7 +33,7 @@ public class controladorClientes {
 
     @GetMapping("/clientes")
     public String getMethodName() {
-        String holamundo = "hola mundo";
+        String holamundo = "<h2>Hola mundo</h2>";
         return holamundo;
     }
     
@@ -40,6 +41,10 @@ public class controladorClientes {
     @PostMapping("/newCliente")
     public ResponseEntity<messageError> postMethodName(@RequestBody ClientesEntity cliente) {
         //TODO: process POST request
+        clientesServie.existeCliente(cliente.getNombreCliente(), cliente.getApellidoCliente());
+        if(cliente.getEmailCliente() != null){
+            clientesServie.yaEstaAsociadoEmail(cliente.getEmailCliente());
+        }
         clientesServie.save(cliente);
         messageError message = new messageError("Cliente guardado", 200);
         return new ResponseEntity<>(message, HttpStatus.OK);
@@ -51,4 +56,14 @@ public class controladorClientes {
         return clientesServie.get(id);
     }
 
+    @PutMapping("/changeCliente")
+    public ResponseEntity<messageError> actualizacionCliente(@RequestBody ClientesEntity cliente){
+
+        clientesServie.get(cliente.getId_cliente());
+        clientesServie.actualizacionCliente(cliente);
+        return new ResponseEntity<>(new messageError("Cliente actualizado", 200), HttpStatus.OK);
+    }
 }
+
+
+

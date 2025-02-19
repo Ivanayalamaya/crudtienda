@@ -25,12 +25,33 @@ public class clientesServie {
         return clientesrepo.findAll();
     }
 
+    //metodo que se serciora de que no haya un cliente con el mismo nombre y apellido
+    public void existeCliente(String nombreCliente, String apellidoCliente) {
+        ClientesEntity existecliente =clientesrepo.existeCliente(nombreCliente, apellidoCliente);
+        if (existecliente == null) {
+            return;
+        }
+        if(  existecliente.getId_cliente()!=0 ){
+            throw new RuntimeException("El cliente "+ nombreCliente+" " + apellidoCliente + "  ya existe");
+        }
+        
+    }
+
+    public void yaEstaAsociadoEmail(String email) {
+        ClientesEntity yaExisteEmail = clientesrepo.yaEstaAsociadoEmail(email);
+        if(yaExisteEmail != null){
+            throw new RuntimeException("El email " + email + " esta asociado a otro cliente, por favor ingrese otro email");
+
+        }
+        
+        
+    }
 
     //metodo que retornara una entidad de tipo cliente por su id
     public ClientesEntity get(int id) {
         ClientesEntity cliente =  clientesrepo.findById(id);
         if(cliente == null){
-            throw new RuntimeException("Cliente no encontrado");
+            throw new RuntimeException("Cliente con id "+ id+ " no encontrado");
         }
         return cliente;
     }
@@ -42,10 +63,26 @@ public class clientesServie {
 
     //actualiza un cliente
     public boolean actualizacionCliente( ClientesEntity cliente) {
-       ClientesEntity cleinteAActualizar = cliente;
+       
+       ClientesEntity clienteEncontrado = clientesrepo.findById(cliente.getId_cliente());
+       if(cliente.getNombreCliente()!=null){
+           clienteEncontrado.setNombreCliente(cliente.getNombreCliente());
+       }
+       if(cliente.getApellidoCliente()!=null){
+           clienteEncontrado.setApellidoCliente(cliente.getApellidoCliente());
+       }
+       if(cliente.getDireccionCliente()!=null){
+           clienteEncontrado.setDireccionCliente(cliente.getDireccionCliente());
+       }
+         if(cliente.getTelefonoCliente()!=null){
+              clienteEncontrado.setTelefonoCliente(cliente.getTelefonoCliente());
+         }
+        if(cliente.getEmailCliente()!=null){
+                clienteEncontrado.setEmailCliente(cliente.getEmailCliente());
+            }         
 
        try{
-              clientesrepo.save(cleinteAActualizar);
+              clientesrepo.save(clienteEncontrado);
               return true;
        } catch (Exception e) {
            return false;

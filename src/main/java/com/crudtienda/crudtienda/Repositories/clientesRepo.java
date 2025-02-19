@@ -16,4 +16,10 @@ public interface clientesRepo extends JpaRepository<ClientesEntity, Integer> {
 
     @Query("SELECT c FROM ClientesEntity c WHERE c.id = ?1")
     ClientesEntity findById(int id);
+
+    @Query("SELECT c FROM ClientesEntity c WHERE c.nombreCliente = ?1 AND c.apellidoCliente = ?2")
+    ClientesEntity existeCliente(String nombreCliente, String apellidoCliente);
+
+    @Query("SELECT c FROM ClientesEntity c WHERE c.emailCliente = ?1")
+    ClientesEntity yaEstaAsociadoEmail(String email); 
 }
