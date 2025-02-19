@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.crudtienda.crudtienda.layerLogical.clientesServie;
+
+import ch.qos.logback.core.model.Model;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,9 +35,9 @@ public class controladorClientes {
      }
 
     @GetMapping("/clientes")
-    public String getMethodName() {
-        String holamundo = "<h2>Hola mundo</h2>";
-        return holamundo;
+    public String getMethodName(Model model) {
+        
+        return "indexClientes";
     }
     
 
