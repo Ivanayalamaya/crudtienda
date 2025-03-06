@@ -8,7 +8,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 @SpringBootApplication
 public class CrudtiendaApplication {
 
-	public static void main(String[] args) {
+		public static void main(String[] args) {
 
 		Dotenv dotenv = Dotenv.load();
 		System.setProperty("DATABASE_URL", dotenv.get("DATABASE_URL"));

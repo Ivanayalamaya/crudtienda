@@ -1,28 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Clientes</title>
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.5.3/css/bootstrap.min.css" />
-</html>
+    <title>Lista de Productos</title>
+</head>
 <body>
-    <div class="container">
-        <h1>Clientes</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Telefone</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="cliente : ${clientes}">
-                    <td th:text="${cliente.nome}"></td>
-                    <td th:text="${cliente.cpf}"></td>
-                    <td th:text="${cliente.telefone}"></td>
-                    <td th:text="${cliente.email}"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <h1>Productos</h1>
+    <ul>
+        <li th:each="producto : ${productos}">
+            <span th:text="${producto.nombreCliente}"></span>
+        </li>
+    </ul>
+</body>
+</html>

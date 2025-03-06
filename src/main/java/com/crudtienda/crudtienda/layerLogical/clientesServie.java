@@ -17,6 +17,10 @@ public class clientesServie {
 
     //guarda un nuevo ciente
     public ClientesEntity save(ClientesEntity clientesEntity) {
+        if (clientesEntity.getNombreCliente().isEmpty() || clientesEntity.getApellidoCliente().isEmpty()) {
+            throw new RuntimeException("El nombre y apellido del cliente no puede ser nulo");
+           
+        }
         return clientesrepo.save(clientesEntity);
     }
 
@@ -27,7 +31,7 @@ public class clientesServie {
 
     //metodo que se serciora de que no haya un cliente con el mismo nombre y apellido
     public void existeCliente(String nombreCliente, String apellidoCliente) {
-        ClientesEntity existecliente =clientesrepo.existeCliente(nombreCliente, apellidoCliente);
+        ClientesEntity existecliente = clientesrepo.existeCliente(nombreCliente, apellidoCliente);
         if (existecliente == null) {
             return;
         }

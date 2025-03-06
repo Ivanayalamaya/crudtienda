@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.crudtienda.crudtienda.layerLogical.clientesServie;
 
-import ch.qos.logback.core.model.Model;
+import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.crudtienda.crudtienda.Advice.messageError;
 import com.crudtienda.crudtienda.Entities.ClientesEntity;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/clientes")
+@CrossOrigin(origins ="*")
 public class controladorClientes {
 
     private clientesServie clientesServie;
@@ -36,7 +39,7 @@ public class controladorClientes {
 
     @GetMapping("/clientes")
     public String getMethodName(Model model) {
-        
+        model.addAttribute("clientes", clientesServie.listAll());
         return "indexClientes";
     }
     
